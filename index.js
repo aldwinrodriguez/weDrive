@@ -1,22 +1,51 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const request = require('request');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.render('index')
 })
 
 app.post('/', (req, res) => {
-    let body = req.body;
-    let crypto = body.crypto;
-    let fiat = body.fiat;
+    let formData = req.body;
+    let from = formData.from;
+    let to = formData.to;
+    let optionFrom = {
+        uri: 'https://api.openweathermap.org/data/2.5/weather',
+        qs: {
+            APPID: 'a2b8a68b80bdbfcaebb2d6c124e35e40',
+            units: 'imperial',
+            q: from
+        }
+    }
+    let optionTo = {
+        uri: 'https://api.openweathermap.org/data/2.5/weather',
+        qs: {
+            APPID: 'a2b8a68b80bdbfcaebb2d6c124e35e40',
+            units: 'imperial',
+            q: to
+        }
+    }
+    var dataFrom, dataTo;
+    request(optionFrom, (error, response, body) => {
+        // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
+        dataFrom = JSON.parse(body);
 
-    res.send('Currently unavailable');
+    });
+    request(optionTo, (error, response, body) => {
+        // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
+        dataTo = JSON.parse(body);
+        console.log(dataFrom, dataTo);
+    });
+
+
 })
 app.listen(3000, () => console.log('starting'));
 
