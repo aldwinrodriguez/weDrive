@@ -1,4 +1,71 @@
 <%- include('header'); -%>
+<!-- 
+    temp
+    temp_min
+    temp_max
+    sunrise
+    sunset
+    city_name
+    weather_status (main)
+    weather_status_description (clear sky)
+    icon
+ -->
+<div class='container-fluid row mt-5'>
+  <div class="card text-center col-lg-4 ml-auto" style="width: 18rem;">
+    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=iconFrom%>.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+        <%=cityFrom%>
+      </h5>
+      <h5 class="card-title">
+        <%=tempFrom%>&deg</h5>
+      <p class="card-text">
+        <%=mainDescFrom%>
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <%=descriptionFrom%>
+      </li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">High of
+        <%=maxTempTo%>&deg</a>
+      <a href="#" class="card-link">Low of
+        <%=minTempTo%>&deg</a>
+    </div>
+  </div>
+  <div class='d-flex align-items-center'>
+    <i class="fas fa-arrows-alt-h ml-5 mr-5"></i>
+  </div>
+  <div class="card text-center col-lg-4 mr-auto" style="width: 18rem;">
+    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=iconTo%>.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+        <%=cityTo%>
+      </h5>
+      <h5 class="card-title">
+        <%=tempTo%>&deg</h5>
+      <p class="card-text">
+        <%=mainDescTo%>
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <%=descriptionTo%>
+      </li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">High of
+        <%=maxTempTo%>&deg</a>
+      <a href="#" class="card-link">Low of
+        <%=minTempTo%>&deg</a>
+    </div>
+  </div>
+</div>
+<!-- 
+     include the initial findings for the cities
+     the api doesn't include the exact lat and lon of cities
+  -->
 
-    
 <%- include('footer'); -%>

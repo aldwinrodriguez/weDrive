@@ -7,6 +7,7 @@ const app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(express.static('public'))
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
@@ -33,17 +34,41 @@ app.post('/', (req, res) => {
             q: to
         }
     }
-    var dataFrom, dataTo;
+    let dataFrom, dataTo;
     request(optionFrom, (error, response, body) => {
-        // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
-        dataFrom = JSON.parse(body);
+        if (response.statusCode === 200) {
+            dataFrom = JSON.parse(body);
+            request(optionTo, (error, response, body) => {
+                // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
+                dataTo = JSON.parse(body);
+                res.render('weather response', {
+                    iconFrom: dataFrom.weather[0].icon,
+                    cityFrom: dataFrom.name,
+                    descriptionFrom: dataFrom.weather[0].description,
+                    mainDescFrom: dataFrom.weather[0].main,
+                    tempFrom: dataFrom.main.temp.toFixed(0),
+                    minTempFrom: dataFrom.main.temp_min.toFixed(0),
+                    maxTempFrom: dataFrom.main.temp_max.toFixed(0),
+                    // end of from
+                    iconTo: dataTo.weather[0].icon,
+                    cityTo: dataTo.name,
+                    descriptionTo: dataTo.weather[0].description,
+                    mainDescTo: dataTo.weather[0].main,
+                    tempTo: dataTo.main.temp.toFixed(0),
+                    minTempTo: dataTo.main.temp_min.toFixed(0),
+                    maxTempTo: dataTo.main.temp_max.toFixed(0),
+                    // end of to
+                });
+                
+                console.log(dataFrom, dataTo);
+            });
+        } else {
+            // tempSolution
+            res.send('<h1>Something went wrong</h1>')
+            // if TYPO, send a page that lists possible city names
+        }
+    });
 
-    });
-    request(optionTo, (error, response, body) => {
-        // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
-        dataTo = JSON.parse(body);
-        console.log(dataFrom, dataTo);
-    });
 
 
 })
