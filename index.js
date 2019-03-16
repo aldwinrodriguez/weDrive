@@ -34,33 +34,55 @@ app.post('/', (req, res) => {
             q: to
         }
     }
-    let dataFrom, dataTo;
+    
+    let dataFrom, dataTo, dataMultiple;
     request(optionFrom, (error, response, body) => {
         if (response.statusCode === 200) {
             dataFrom = JSON.parse(body);
             request(optionTo, (error, response, body) => {
                 // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
                 dataTo = JSON.parse(body);
-                res.render('weather response', {
-                    iconFrom: dataFrom.weather[0].icon,
-                    cityFrom: dataFrom.name,
-                    descriptionFrom: dataFrom.weather[0].description,
-                    mainDescFrom: dataFrom.weather[0].main,
-                    tempFrom: dataFrom.main.temp.toFixed(0),
-                    minTempFrom: dataFrom.main.temp_min.toFixed(0),
-                    maxTempFrom: dataFrom.main.temp_max.toFixed(0),
-                    // end of from
-                    iconTo: dataTo.weather[0].icon,
-                    cityTo: dataTo.name,
-                    descriptionTo: dataTo.weather[0].description,
-                    mainDescTo: dataTo.weather[0].main,
-                    tempTo: dataTo.main.temp.toFixed(0),
-                    minTempTo: dataTo.main.temp_min.toFixed(0),
-                    maxTempTo: dataTo.main.temp_max.toFixed(0),
-                    // end of to
+                console.log(dataFrom.coord.lon, dataFrom.coord.lat, dataTo.coord.lon,dataTo.coord.lat)
+                let optionMultiple = {
+                    uri: 'http://api.openweathermap.org/data/2.5/box/city',
+                    qs: {
+                        APPID: 'a2b8a68b80bdbfcaebb2d6c124e35e40',
+                        units: 'imperial',
+                        bbox: dataFrom.coord.lon + ',' + dataFrom.coord.lat + ',' + dataTo.coord.lon + ',' + dataTo.coord.lat + ',' + 20
+                    }
+                }
+                request(optionMultiple, (error, response, body) => {
+                    let dataMultiple = JSON.parse(body);
+                    // console.log(dataFrom.coord.lon, dataFrom.coord.lat, dataTo.coord.lon, dataTo.coord.lat, 20);
+                    // console.log(dataMultiple.list);
+                    // let list =dataMultiple.list; 
+                    // list.forEach((element) => {
+                    //     console.log(element.name)
+                    // });
+                    res.render('weather response', {
+                        // start of from
+                        iconFrom: dataFrom.weather[0].icon,
+                        cityFrom: dataFrom.name,
+                        descriptionFrom: dataFrom.weather[0].description,
+                        mainDescFrom: dataFrom.weather[0].main,
+                        tempFrom: dataFrom.main.temp.toFixed(0),
+                        minTempFrom: dataFrom.main.temp_min.toFixed(0),
+                        maxTempFrom: dataFrom.main.temp_max.toFixed(0),
+                        // end of from
+                        // start of to
+                        iconTo: dataTo.weather[0].icon,
+                        cityTo: dataTo.name,
+                        descriptionTo: dataTo.weather[0].description,
+                        mainDescTo: dataTo.weather[0].main,
+                        tempTo: dataTo.main.temp.toFixed(0),
+                        minTempTo: dataTo.main.temp_min.toFixed(0),
+                        maxTempTo: dataTo.main.temp_max.toFixed(0),
+                        // end of to
+                        // start of multipleData
+                        list: dataMultiple.list,
+                        // end of multipleData
+                    });
                 });
-                
-                console.log(dataFrom, dataTo);
             });
         } else {
             // tempSolution
@@ -73,6 +95,8 @@ app.post('/', (req, res) => {
 
 })
 app.listen(3000, () => console.log('starting'));
+
+
 
 
 // API call
