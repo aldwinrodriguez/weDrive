@@ -11,8 +11,8 @@
     icon
  -->
 <!-- start from card -->
-<div class='container-fluid row mt-5'>
-  <div class="card text-center col-lg-12 ml-auto mr-auto" style="width: 18rem;">
+<div class='container-fluid  mr-auto ml-auto row mt-5'>
+  <div class="card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
     <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=iconFrom%>.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">
@@ -36,46 +36,60 @@
         <%=minTempTo%>&deg</a>
     </div>
   </div>
-  <!-- end from card -->
-  <!-- start multiple card -->
-
-  <% list.forEach((element) => { %>
-  <div class='d-flex align-items-center col-lg-1.5'>
-    <i class="fas fa-angle-double-right"></i>
+</div>
+<!-- end from card -->
+<!-- start multiple card -->
+<% let i = 0; %>
+<% while (i < list.length) { %>
+<% if ((i % 3) === 0) { %>
+<div class='container-fluid ml-auto mr-auto row mt-5'>
+  <%  } %>
+  <div class='d-flex align-items-center col-lg-1'>
+    <i class="fas ml-auto mr-auto text-center fa-angle-double-right"></i>
   </div>
-  <div class="card text-center col-lg-3 ml-auto mr-auto" style="width: 5rem;">
-    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=element.weather[0].icon%>.png" alt="Card image cap">
+  <div class="card text-center col-lg-2 ml-auto mr-auto" style="width: 18rem;">
+    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=list[i].weather[0].icon%>.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">
-        <%=element.name%>
+        <%=list[i].name%>
       </h5>
       <h5 class="card-title">
-        <%=element.main.temp.toFixed(0)%>&deg</h5>
+        <%=list[i].main.temp.toFixed(0)%>&deg</h5>
       <p class="card-text">
-        <%=element.weather[0].main%>
+        <%=list[i].weather[0].main%>
       </p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <%=element.weather[0].description%>
+        <%=list[i].weather[0].description%>
       </li>
     </ul>
     <div class="card-body">
       <a href="#" class="card-link">High of
-        <%=element.main.temp_max.toFixed(0)%>&deg</a>
+        <%=list[i].main.temp_max.toFixed(0)%>&deg</a></br>
       <a href="#" class="card-link">Low of
-        <%=element.main.temp_min.toFixed(0)%>&deg</a>
+        <%=list[i].main.temp_min.toFixed(0)%>&deg</a>
     </div>
   </div>
-  <% }); %>
-  <!-- end multiple card -->
-  <!-- arrow -->
+  <% if (((i-2) % 3) === 0) { %>
   <div class='d-flex align-items-center col-lg-1'>
-    <i class="fas fa-angle-double-right"></i>
+    <i class="fas mr-auto ml-auto fa-angle-double-right"></i>
   </div>
-  <!-- arrow -->
-  <!-- start to card -->
-  <div class="card text-center col-lg-12 ml-auto mr-auto" style="width: 18rem;">
+</div>
+<%  } %>
+<% i++ %>
+<% }; %>
+<!-- end multiple card -->
+<!-- arrow -->
+<% if (i % 3) { %>
+<div class='d-flex align-items-center col-lg-1'>
+  <i class="fas text-center mr-auto ml-auto fa-angle-double-right"></i>
+</div>
+<% } %>
+<!-- arrow -->
+<!-- start to card -->
+<div class='container-fluid ml-auto mr-auto row mt-5 mb-5'>
+  <div class="card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
     <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=iconTo%>.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">
@@ -100,6 +114,7 @@
     </div>
   </div>
 </div>
+
 <!-- end to card -->
 <!-- 
      include the initial findings for the cities

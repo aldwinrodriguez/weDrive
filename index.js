@@ -7,12 +7,10 @@ const app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
+app.get('/', (req, res) => res.render('index'));
 
 app.post('/', (req, res) => {
     let formData = req.body;
@@ -34,7 +32,7 @@ app.post('/', (req, res) => {
             q: to
         }
     }
-    
+
     let dataFrom, dataTo, dataMultiple;
     request(optionFrom, (error, response, body) => {
         if (response.statusCode === 200) {
@@ -42,7 +40,7 @@ app.post('/', (req, res) => {
             request(optionTo, (error, response, body) => {
                 // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
                 dataTo = JSON.parse(body);
-                console.log(dataFrom.coord.lon, dataFrom.coord.lat, dataTo.coord.lon,dataTo.coord.lat)
+                console.log(dataFrom.coord.lon, dataFrom.coord.lat, dataTo.coord.lon, dataTo.coord.lat)
                 let optionMultiple = {
                     uri: 'http://api.openweathermap.org/data/2.5/box/city',
                     qs: {
