@@ -1,4 +1,37 @@
+body.weather-response-wrapper {
+    background: #ffffff url("/images/sunny.jpg") no-repeat fixed center;
+    background-size: 100%;
+    color: rgb(252, 252, 252);
+}
+
 .fa-angle-double-right {
+
     font-size: 48px;
-    color: rgba(73, 67, 67, 0.5);
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 2s infinite linear;
+}
+
+@-webkit-keyframes hue {
+    from {
+        -webkit-filter: hue-rotate(0deg);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(-360deg);
+    }
+}
+
+
+.sunny {
+    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    border-radius: 1.5em;
+    box-shadow: 0px 0px 20px #ff8753;
+}
+
+.sunny-desc {
+    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
+    box-shadow: 0px 0px 20px #ff595c;
 }

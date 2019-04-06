@@ -10,115 +10,118 @@
     weather_status_description (clear sky)
     icon
  -->
-<!-- start from card -->
-<div class='container-fluid  mr-auto ml-auto row mt-5'>
-  <div class="card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
-    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=iconFrom%>.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">
-        <%=cityFrom%>
-      </h5>
-      <h5 class="card-title">
-        <%=tempFrom%>&deg</h5>
-      <p class="card-text">
-        <%=mainDescFrom%>
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <%=descriptionFrom%>
-      </li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">High of
-        <%=maxTempTo%>&deg</a>
-      <a href="#" class="card-link">Low of
-        <%=minTempTo%>&deg</a>
-    </div>
-  </div>
-</div>
-<!-- end from card -->
-<!-- start multiple card -->
-<% let i = 0; %>
-<% while (i < list.length) { %>
-<% if ((i % 3) === 0) { %>
-<div class='container-fluid ml-auto mr-auto row mt-5'>
-  <%  } %>
-  <div class='d-flex align-items-center col-lg-1'>
-    <i class="fas ml-auto mr-auto text-center fa-angle-double-right"></i>
-  </div>
-  <div class="card text-center col-lg-2 ml-auto mr-auto" style="width: 18rem;">
-    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=list[i].weather[0].icon%>.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">
-        <%=list[i].name%>
-      </h5>
-      <h5 class="card-title">
-        <%=list[i].main.temp.toFixed(0)%>&deg</h5>
-      <p class="card-text">
-        <%=list[i].weather[0].main%>
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <%=list[i].weather[0].description%>
-      </li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">High of
-        <%=list[i].main.temp_max.toFixed(0)%>&deg</a></br>
-      <a href="#" class="card-link">Low of
-        <%=list[i].main.temp_min.toFixed(0)%>&deg</a>
-    </div>
-  </div>
-  <% if (((i-2) % 3) === 0) { %>
-  <div class='d-flex align-items-center col-lg-1'>
-    <i class="fas mr-auto ml-auto fa-angle-double-right"></i>
-  </div>
-</div>
-<%  } %>
-<% i++ %>
-<% }; %>
-<!-- end multiple card -->
-<!-- arrow -->
-<% if (i % 3) { %>
-<div class='d-flex align-items-center col-lg-1'>
-  <i class="fas text-center mr-auto ml-auto fa-angle-double-right"></i>
-</div>
-<% } %>
-<!-- arrow -->
-<!-- start to card -->
-<div class='container-fluid ml-auto mr-auto row mt-5 mb-5'>
-  <div class="card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
-    <img class="card-img-top w-25 ml-auto mt-4 mr-auto" src="/images/<%=iconTo%>.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">
-        <%=cityTo%>
-      </h5>
-      <h5 class="card-title">
-        <%=tempTo%>&deg</h5>
-      <p class="card-text">
-        <%=mainDescTo%>
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <%=descriptionTo%>
-      </li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">High of
-        <%=maxTempTo%>&deg</a>
-      <a href="#" class="card-link">Low of
-        <%=minTempTo%>&deg</a>
-    </div>
-  </div>
-</div>
 
-<!-- end to card -->
-<!-- 
+<body class='weather-response-wrapper'>
+  <!-- start from card -->
+  <div class='container-fluid  mr-auto ml-auto row mt-5'>
+    <div class="sunny card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
+      <img class="card-img-top w-50 ml-auto mt-4 mr-auto" src="/images/<%=iconFrom%>.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%=cityFrom%>
+        </h5>
+        <h5 class="card-title">
+          <%=tempFrom%>&deg</h5>
+        <p class="card-text">
+          <%=mainDescFrom%>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="sunny-desc list-group-item">
+          <%=descriptionFrom%>
+        </li>
+      </ul>
+      <div class="card-body">
+        <span class="card-link">High of
+          <%=maxTempTo%>&deg</a>
+        <span class="card-link ml-5">Low of
+          <%=minTempTo%>&deg</a>
+      </div>
+    </div>
+  </div>
+  <!-- end from card -->
+  <!-- start multiple card -->
+  <% let i = 0; %>
+  <% while (i < list.length) { %>
+  <% if ((i % 3) === 0) { %>
+  <div class='container-fluid ml-auto mr-auto row mt-5'>
+    <%  } %>
+    <div class='d-flex align-items-center col-lg-1'>
+      <i class="fas ml-auto mr-auto text-center fa-angle-double-right"></i>
+    </div>
+    <div class="sunny card text-center col-lg-2 ml-auto mr-auto" style="width: 18rem;">
+      <img class="card-img-top w-50 ml-auto mt-4 mr-auto" src="/images/<%=list[i].weather[0].icon%>.png"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%=list[i].name%>
+        </h5>
+        <h5 class="card-title">
+          <%=list[i].main.temp.toFixed(0)%>&deg</h5>
+        <p class="card-text">
+          <%=list[i].weather[0].main%>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="sunny-desc list-group-item">
+          <%=list[i].weather[0].description%>
+        </li>
+      </ul>
+      <div class="card-body">
+        <span class="card-link">High of
+          <%=list[i].main.temp_max.toFixed(0)%>&deg</a></br>
+        <span class="card-link">Low of
+          <%=list[i].main.temp_min.toFixed(0)%>&deg</a>
+      </div>
+    </div>
+    <% if (((i-2) % 3) === 0) { %>
+    <div class='d-flex align-items-center col-lg-1'>
+      <i class="fas mr-auto ml-auto fa-angle-double-right"></i>
+    </div>
+  </div>
+  <%  } %>
+  <% i++ %>
+  <% }; %>
+  <!-- end multiple card -->
+  <!-- arrow -->
+  <% if (i % 3) { %>
+  <div class='d-flex align-items-center col-lg-1'>
+    <i class="fas text-center mr-auto ml-auto fa-angle-double-right"></i>
+  </div>
+  <% } %>
+  <!-- arrow -->
+  <!-- start to card -->
+  <div class='container-fluid ml-auto mr-auto row mt-5 mb-5'>
+    <div class="sunny card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
+      <img class="card-img-top w-50 ml-auto mt-4 mr-auto" src="/images/<%=iconTo%>.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%=cityTo%>
+        </h5>
+        <h5 class="card-title">
+          <%=tempTo%>&deg</h5>
+        <p class="card-text">
+          <%=mainDescTo%>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="sunny-desc list-group-item">
+          <%=descriptionTo%>
+        </li>
+      </ul>
+      <div class="card-body">
+        <span class="card-link">High of
+          <%=maxTempTo%>&deg</a>
+        <span class="card-link ml-5">Low of
+          <%=minTempTo%>&deg</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- end to card -->
+  <!-- 
      include the initial findings for the cities
      the api doesn't include the exact lat and lon of cities
   -->
 
-<%- include('footer'); -%>
+  <%- include('footer'); -%>
