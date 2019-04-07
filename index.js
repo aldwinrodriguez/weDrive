@@ -52,11 +52,18 @@ app.post('/', (req, res) => {
                 }
 
                 request(optionMultiple, (error, response, body) => {
+                    if (error) {
+                        res.send('search box is too small');
+                    }
                     let dataMultiple = JSON.parse(body);
-                    // getting temperature for multiple data 
-                    console.log(dataMultiple);
+                    console.log(dataMultiple.length);
                     
-                    let desc = myFunc.getDescription(myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id)[1])
+                    // getting temperature for multiple data 
+                    // console.log(dataMultiple);
+                    let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
+                    console.log(imgAndDesc);
+                    
+                    let desc = myFunc.getDescription(imgAndDesc[1]);
                     // console.log(myFunc.getDescription('scatter clouds'));
                     // console.log(myFunc.getDescription('broken clouds'));
                     // console.log(myFunc.getDescription('drizzle'));
@@ -100,8 +107,6 @@ app.post('/', (req, res) => {
             // if TYPO, send a page that lists possible city names
         }
     });
-
-
 
 })
 app.listen(3000, () => console.log('starting'));
