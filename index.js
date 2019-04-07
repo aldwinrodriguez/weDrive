@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const myFunc = require(__dirname + '/myFunc_export/myFunc.js');
+
 
 const app = express();
 
@@ -51,12 +53,10 @@ app.post('/', (req, res) => {
                 }
                 request(optionMultiple, (error, response, body) => {
                     let dataMultiple = JSON.parse(body);
-                    // console.log(dataFrom.coord.lon, dataFrom.coord.lat, dataTo.coord.lon, dataTo.coord.lat, 20);
-                    // console.log(dataMultiple.list);
-                    // let list =dataMultiple.list; 
-                    // list.forEach((element) => {
-                    //     console.log(element.name)
-                    // });
+                    // getting temperature for multiple data 
+                    let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
+                    console.log(imgAndDesc);
+                    
                     res.render('weather response', {
                         // start of from
                         iconFrom: dataFrom.weather[0].icon,
