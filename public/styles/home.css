@@ -173,23 +173,28 @@ body.weather-response-wrapper-50d {
 }
 
 .sunny-10d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #9effec 0%, #d8ff9e 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #9effec;
+    color: black;
 }
 
 .sunny-desc-10d {
-    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
-    box-shadow: 0px 0px 20px #ff595c;
+    background-image: linear-gradient(120deg, #d8ff9e 0%, #9effec 100%);
+    box-shadow: 0px 0px 20px #d8ff9e;
+    color: black;
+
 }
 
 .mainDescWrapper-10d {
     width: 50%;
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #9effec 0%, #d8ff9e 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #9effec;
     margin: 5% auto 0;
     padding: 1%;
+    color: black;
+
 }
 
 .sunny-11d {
@@ -213,21 +218,21 @@ body.weather-response-wrapper-50d {
 }
 
 .sunny-13d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #f3f1ff 0%, #b5ade8 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #f3f1ff;
 }
 
 .sunny-desc-13d {
-    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
-    box-shadow: 0px 0px 20px #ff595c;
+    background-image: linear-gradient(120deg, #b5ade8 0%, #f3f1ff 100%);
+    box-shadow: 0px 0px 20px #b5ade8;
 }
 
 .mainDescWrapper-13d {
     width: 50%;
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #f3f1ff 0%, #b5ade8 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #f3f1ff;
     margin: 5% auto 0;
     padding: 1%;
 }

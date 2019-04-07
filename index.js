@@ -54,6 +54,8 @@ app.post('/', (req, res) => {
                 request(optionMultiple, (error, response, body) => {
                     let dataMultiple = JSON.parse(body);
                     // getting temperature for multiple data 
+                    console.log(dataMultiple);
+                    
                     let desc = myFunc.getDescription(myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id)[1])
                     // console.log(myFunc.getDescription('scatter clouds'));
                     // console.log(myFunc.getDescription('broken clouds'));
