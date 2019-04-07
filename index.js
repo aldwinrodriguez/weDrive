@@ -35,7 +35,6 @@ app.post('/', (req, res) => {
         }
     }
 
-    let dataFrom, dataTo, dataMultiple;
     request(optionFrom, (error, response, body) => {
         if (response.statusCode === 200) {
             dataFrom = JSON.parse(body);
@@ -51,11 +50,18 @@ app.post('/', (req, res) => {
                         bbox: dataFrom.coord.lon + ',' + dataFrom.coord.lat + ',' + dataTo.coord.lon + ',' + dataTo.coord.lat + ',' + 20
                     }
                 }
+
                 request(optionMultiple, (error, response, body) => {
                     let dataMultiple = JSON.parse(body);
                     // getting temperature for multiple data 
-                    let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
-                    console.log(imgAndDesc);
+                    let desc = myFunc.getDescription(myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id)[1])
+                    // console.log(myFunc.getDescription('scatter clouds'));
+                    // console.log(myFunc.getDescription('broken clouds'));
+                    // console.log(myFunc.getDescription('drizzle'));
+                    // console.log(myFunc.getDescription('rain'));
+                    // console.log(myFunc.getDescription('thunderstorm'));
+                    // console.log(myFunc.getDescription('snow'));
+                    // console.log(myFunc.getDescription('mist'));
                     
                     res.render('weather response', {
                         // start of from
@@ -78,6 +84,10 @@ app.post('/', (req, res) => {
                         // end of to
                         // start of multipleData
                         list: dataMultiple.list,
+                        avgWeatherAndDesc: myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id),
+                        avgTemp: myFunc.mostFreqNum(dataMultiple.list),
+                        mainDesc: myFunc.getDescription(myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id)[1]),
+
                         // end of multipleData
                     });
                 });

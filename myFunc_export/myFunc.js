@@ -1,7 +1,7 @@
 module.exports = {
     mostFreq(arr) {
         let arrMap = {};
-        arr.forEach(element => !arrMap[element] ? arrMap[element] = 1 : arrMap[element]++);
+        arr.forEach(element => !arrMap[Math.ceil(element)] ? arrMap[Math.ceil(element)] = 1 : arrMap[Math.ceil(element)]++);
         let highestKey;
         let highestVal = 0;
         for (const key in arrMap) {
@@ -29,11 +29,36 @@ module.exports = {
         arr.forEach(element => weatherId.push(element.weather[0].id));
         weatherId.push(fnum);
         weatherId.push(snum);
-
-        console.log(weatherId);
-
         let avgId = this.mostFreq(weatherId);
 
         return imgId[avgId];
+    },
+    mostFreqNum(arr) {
+        let arrMap = {};
+        arr.forEach(element => !arrMap[Math.ceil(element.main.temp)] ? arrMap[Math.ceil(element.main.temp)] = 1 : arrMap[Math.ceil(element.main.temp)]++);
+        let highestKey;
+        let highestVal = 0;
+        for (const key in arrMap) {
+            let val = arrMap[key];
+            if (highestVal < val) {
+                highestKey = key;
+                highestVal = val;
+            }
+        }
+        return highestKey;
+    },
+    getDescription(desc) {
+        let descObj = {
+            'clear sky': 'Shine up, sun is rising. It\'d be a nice drive 😎😎😎',
+            'few clouds': 'Clouds there and there, driving will be smooth and non hazardous 😁👍',
+            'scatter clouds': 'Clouds there and there, driving will be smooth and non hazardous 😁👍',
+            'broken clouds': 'Clouds there and there, driving will be smooth and non hazardous 😁👍',
+            'drizzle': 'Drizzle drake, WORST BEHAVIOR, lil rain 🚶‍',
+            'rain': 'Slippery roads, be extra careful 😖!!',
+            'thunderstorm': 'Might wanna reconsider your trip 😣',
+            'snow': '🙅‍ Stay home, you got NETFLIX, you got HULU, STAY HOME🙅‍ !!',
+            'mist': 'Slow down driving, cars might be in front of you 🧐',
+        }
+        return descObj[desc];
     }
 }

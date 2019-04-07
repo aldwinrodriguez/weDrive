@@ -11,10 +11,30 @@
     icon
  -->
 
-<body class='weather-response-wrapper'>
+<body class='weather-response-wrapper-<%=avgWeatherAndDesc[0]%>'>
+  <div style="background-color: black;"><%=avgWeatherAndDesc[1]%></div>
+
+  <div class='mainDescWrapper-<%=avgWeatherAndDesc[0]%> descW'>
+    <div>
+      <img class="inlineBl mainImg ml-2" src="/images/<%= avgWeatherAndDesc[0] %>.png">
+      <p class="inlineBl descQ"><%= mainDesc%></p>
+    </div>
+    <div class="mb-3">
+      <i class="fas fa-angle-double-right descFont mr-3"></i>
+      <p class="mainDesc">Mostly <%= avgTemp%>&deg if you go now</p>
+    </div>
+    <div>
+      <p class='ml-5 mb-0'><i>"Sunshine is delicious, rain is refreshing, wind braces us up, snow is exhilarating; there
+          is really no such
+          thing as bad weather, only different kinds of good weather."</i></p>
+    </div>
+    <p class='author'>John Ruskin</p>
+  </div>
+
   <!-- start from card -->
+
   <div class='container-fluid  mr-auto ml-auto row mt-5'>
-    <div class="sunny card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
+    <div class="sunny-<%=avgWeatherAndDesc[0]%> card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
       <img class="card-img-top w-50 ml-auto mt-4 mr-auto" src="/images/<%=iconFrom%>.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">
@@ -27,15 +47,15 @@
         </p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="sunny-desc list-group-item">
+        <li class="sunny-desc-<%=avgWeatherAndDesc[0]%> list-group-item">
           <%=descriptionFrom%>
         </li>
       </ul>
       <div class="card-body">
         <span class="card-link">High of
           <%=maxTempTo%>&deg</a>
-        <span class="card-link ml-5">Low of
-          <%=minTempTo%>&deg</a>
+          <span class="card-link ml-5">Low of
+            <%=minTempTo%>&deg</a>
       </div>
     </div>
   </div>
@@ -49,7 +69,7 @@
     <div class='d-flex align-items-center col-lg-1'>
       <i class="fas ml-auto mr-auto text-center fa-angle-double-right"></i>
     </div>
-    <div class="sunny card text-center col-lg-2 ml-auto mr-auto" style="width: 18rem;">
+    <div class="sunny-<%=avgWeatherAndDesc[0]%> card text-center col-lg-2 ml-auto mr-auto" style="width: 18rem;">
       <img class="card-img-top w-50 ml-auto mt-4 mr-auto" src="/images/<%=list[i].weather[0].icon%>.png"
         alt="Card image cap">
       <div class="card-body">
@@ -63,15 +83,15 @@
         </p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="sunny-desc list-group-item">
+        <li class="sunny-desc-<%=avgWeatherAndDesc[0]%> list-group-item">
           <%=list[i].weather[0].description%>
         </li>
       </ul>
       <div class="card-body">
         <span class="card-link">High of
           <%=list[i].main.temp_max.toFixed(0)%>&deg</a></br>
-        <span class="card-link">Low of
-          <%=list[i].main.temp_min.toFixed(0)%>&deg</a>
+          <span class="card-link">Low of
+            <%=list[i].main.temp_min.toFixed(0)%>&deg</a>
       </div>
     </div>
     <% if (((i-2) % 3) === 0) { %>
@@ -92,7 +112,7 @@
   <!-- arrow -->
   <!-- start to card -->
   <div class='container-fluid ml-auto mr-auto row mt-5 mb-5'>
-    <div class="sunny card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
+    <div class="sunny-<%=avgWeatherAndDesc[0]%> card text-center col-lg-3 ml-auto mr-auto" style="width: 18rem;">
       <img class="card-img-top w-50 ml-auto mt-4 mr-auto" src="/images/<%=iconTo%>.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">
@@ -105,15 +125,15 @@
         </p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="sunny-desc list-group-item">
+        <li class="sunny-desc-<%=avgWeatherAndDesc[0]%> list-group-item">
           <%=descriptionTo%>
         </li>
       </ul>
       <div class="card-body">
         <span class="card-link">High of
           <%=maxTempTo%>&deg</a>
-        <span class="card-link ml-5">Low of
-          <%=minTempTo%>&deg</a>
+          <span class="card-link ml-5">Low of
+            <%=minTempTo%>&deg</a>
       </div>
     </div>
   </div>
