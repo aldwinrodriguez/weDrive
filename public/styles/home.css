@@ -93,63 +93,72 @@ body.weather-response-wrapper-50d {
 }
 
 .sunny-02d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #d079fc 0%, #79d0fc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #d079fc;
+    color: rgb(31, 29, 29);
 }
 
 .sunny-desc-02d {
-    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
-    box-shadow: 0px 0px 20px #ff595c;
+    background-image: linear-gradient(120deg, #79d0fc 0%, #d079fc 100%);
+    box-shadow: 0px 0px 20px #79d0fc;
+    color: rgb(31, 29, 29);
 }
 
 .mainDescWrapper-02d {
     width: 50%;
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #d079fc 0%, #79d0fc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #d079fc;
     margin: 5% auto 0;
     padding: 1%;
+    color: rgb(31, 29, 29);
 }
 
 .sunny-03d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #d079fc 0%, #79d0fc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #d079fc;
+    color: rgb(31, 29, 29);
 }
 
 .sunny-desc-03d {
-    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
-    box-shadow: 0px 0px 20px #ff595c;
+    background-image: linear-gradient(120deg, #79d0fc 0%, #d079fc 100%);
+    box-shadow: 0px 0px 20px #79d0fc;
+    color: rgb(31, 29, 29);
 }
 
 .mainDescWrapper-03d {
     width: 50%;
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #d079fc 0%, #79d0fc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #d079fc;
     margin: 5% auto 0;
     padding: 1%;
+    color: rgb(31, 29, 29);
 }
 
 .sunny-04d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #d079fc 0%, #79d0fc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #d079fc;
+    color: rgb(31, 29, 29);
 }
 
 .sunny-desc-04d {
-    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
-    box-shadow: 0px 0px 20px #ff595c;
+    background-image: linear-gradient(120deg, #79d0fc 0%, #d079fc 100%);
+    box-shadow: 0px 0px 20px #79d0fc;
+    color: rgb(31, 29, 29);
 }
 
 .mainDescWrapper-04d {
     width: 50%;
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #d079fc 0%, #79d0fc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #d079fc;
     margin: 5% auto 0;
     padding: 1%;
+    color: rgb(31, 29, 29);
 }
 
 .sunny-09d {
@@ -173,26 +182,23 @@ body.weather-response-wrapper-50d {
 }
 
 .sunny-10d {
-    background-image: linear-gradient(120deg, #9effec 0%, #d8ff9e 100%);
+    background-image: linear-gradient(120deg, #f0e2fc 0%, #e2fafc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #9effec;
+    box-shadow: 0px 0px 20px #f0e2fc;
     color: rgb(43, 41, 41);
 }
 
 .sunny-desc-10d {
-    background-image: linear-gradient(120deg, #d8ff9e 0%, #9effec 100%);
-    box-shadow: 0px 0px 20px #d8ff9e;
+    background-image: linear-gradient(120deg, #e2fafc 0%, #f0e2fc 100%);
+    box-shadow: 0px 0px 20px #e2fafc;
     color: rgb(43, 41, 41);
 
 }
 
 .mainDescWrapper-10d {
-    width: 50%;
-    background-image: linear-gradient(120deg, #9effec 0%, #d8ff9e 100%);
+    background-image: linear-gradient(120deg, #f0e2fc 0%, #e2fafc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #9effec;
-    margin: 5% auto 0;
-    padding: 1%;
+    box-shadow: 0px 0px 20px #f0e2fc;
     color: rgb(43, 41, 41);
 
 }
@@ -238,20 +244,23 @@ body.weather-response-wrapper-50d {
 }
 
 .sunny-50d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #f0e2fc 0%, #e2fafc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #f0e2fc;
+    color: rgb(43, 41, 41);
 }
 
 .sunny-desc-50d {
-    background-image: linear-gradient(120deg, #ff595c 0%, #ff8753 100%);
-    box-shadow: 0px 0px 20px #ff595c;
+    background-image: linear-gradient(120deg, #e2fafc 0%, #f0e2fc 100%);
+    box-shadow: 0px 0px 20px #e2fafc;
+    color: rgb(43, 41, 41);
 }
 
 .mainDescWrapper-50d {
-    background-image: linear-gradient(120deg, #ff8753 0%, #ff595c 100%);
+    background-image: linear-gradient(120deg, #f0e2fc 0%, #e2fafc 100%);
     border-radius: 1.5em;
-    box-shadow: 0px 0px 20px #ff8753;
+    box-shadow: 0px 0px 20px #f0e2fc;
+    color: rgb(43, 41, 41);
 
 }
 
@@ -293,4 +302,46 @@ body.weather-response-wrapper-50d {
     font-size: 1.3em;
     width: 75%;
     margin: auto 0;
+}
+
+#itemInput {
+    margin: 1rem 0 0;
+    width: 100%;
+    height: 2rem;
+    font-size: .8rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#itemInput:focus {
+    transition: all .5s;
+    border: 0px solid transparent;
+    box-shadow: 0px 0px 60px 2px rgba(138, 64, 235, 0.678);
+}
+
+body.index {
+    background: lightblue url("/images/beach-blur-close-up-949215.jpg") no-repeat fixed center;
+}
+
+#wrapper {
+    width: 400px;
+    margin: 13% auto;
+    background-color: rgba(240, 248, 255, 0.658);
+    padding: 2% 3%;
+    border: 0px solid transparent;
+    border-radius: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+button.center {
+    width: 180px;
+    margin: 8% 20% 0;
+    border: 0 solid transparent;
+    background-color: rgba(162, 191, 202, 0.562);
+    font-size: 1.3em;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 1px rgba(134, 79, 206, 0.678);
 }

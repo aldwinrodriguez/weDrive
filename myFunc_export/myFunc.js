@@ -75,9 +75,9 @@ module.exports = {
             'broken clouds': 'Clouds there and there, driving will be smooth and non hazardous 😁👍',
             'drizzle': 'Drizzle drake, WORST BEHAVIOR, lil rain 🚶‍',
             'rain': 'Slippery roads, be extra careful 😖!!',
-            'thunderstorm': 'Might wanna reconsider your trip 😣',
+            'thunderstorm': 'Storm is coming, might wanna reconsider your trip 😣',
             'snow': '🙅‍ Stay home, you got NETFLIX, you got HULU, STAY HOME🙅‍ !!',
-            'mist': 'Slow down driving, cars might be in front of you 🧐',
+            'mist': 'Misty, Slow down driving, cars might be in front of you 🧐',
         }
         return descObj[desc];
     }

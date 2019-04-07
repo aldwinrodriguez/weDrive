@@ -1,11 +1,15 @@
 <%- include('header'); -%>
 
-<body>
+<body class="index">
+    <div id="wrapper">
+        <div class='itemInputContainer'>
+            <form action="/" method="post">
+                <h1 class='center'>weDrive</h1>
+                <input type="text" name="from" id='itemInput' placeholder="From what city?" autofocus>
+                <input type="text" name="to" id='itemInput' placeholder="To what city?">
+                <button type="submit" class='center'>Check Weather</button>
+            </form>
+        </div>
+    </div>
 
-    <form action="/" method="post">
-        <h1>Weather</h1>
-        <input type="text" name="from" placeholder="From what city?">
-        <input type="text" name="to" placeholder="To what city?">
-        <button type="submit">Check weather</button>
-    </form>
     <%- include('footer'); -%>
