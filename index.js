@@ -1,8 +1,9 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
-const myFunc = require(__dirname + '/myFunc_export/myFunc.js');
-
+const myFunc = require(__dirname + '/my_export/myFunc.js');
+const options = require(__dirname + '/my_export/options.js');
 
 const app = express();
 
@@ -18,52 +19,25 @@ app.post('/', (req, res) => {
     let formData = req.body;
     let from = formData.from;
     let to = formData.to;
-    let optionFrom = {
-        uri: 'https://api.openweathermap.org/data/2.5/weather',
-        qs: {
-            APPID: 'a2b8a68b80bdbfcaebb2d6c124e35e40',
-            units: 'imperial',
-            q: from
-        }
-    }
-    let optionTo = {
-        uri: 'https://api.openweathermap.org/data/2.5/weather',
-        qs: {
-            APPID: 'a2b8a68b80bdbfcaebb2d6c124e35e40',
-            units: 'imperial',
-            q: to
-        }
-    }
 
-    request(optionFrom, (error, response, body) => {
+    request(options.Where(from), (error, response, body) => {
         if (response.statusCode === 200) {
             dataFrom = JSON.parse(body);
-            request(optionTo, (error, response, body) => {
+            request(options.Where(to), (error, response, body) => {
                 // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
                 dataTo = JSON.parse(body);
-                console.log(dataFrom.coord.lon, dataFrom.coord.lat, dataTo.coord.lon, dataTo.coord.lat)
-                let optionMultiple = {
-                    uri: 'http://api.openweathermap.org/data/2.5/box/city',
-                    qs: {
-                        APPID: 'a2b8a68b80bdbfcaebb2d6c124e35e40',
-                        units: 'imperial',
-                        bbox: dataFrom.coord.lon + ',' + dataFrom.coord.lat + ',' + dataTo.coord.lon + ',' + dataTo.coord.lat + ',' + 20
-                    }
-                }
 
-                request(optionMultiple, (error, response, body) => {
-                    if (error) {
-                        res.send('search box is too small');
-                    }
+                let fromLon = dataFrom.coord.lon;
+                let fromLat = dataFrom.coord.lat;
+                let toLon = dataTo.coord.lon;
+                let toLat = dataTo.coord.lat;
+
+                request(options.Multiple(fromLon, fromLat, toLon, toLat), (error, response, body) => {
+                    if (error) res.send('search box is too small');
                     let dataMultiple = JSON.parse(body);
-                    console.log(dataMultiple.length);
-                    
-                    // getting temperature for multiple data 
-                    // console.log(dataMultiple);
                     let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
-                    console.log(imgAndDesc);
-                    
                     let desc = myFunc.getDescription(imgAndDesc[1]);
+					console.log("TCL: desc", desc)
                     // console.log(myFunc.getDescription('scatter clouds'));
                     // console.log(myFunc.getDescription('broken clouds'));
                     // console.log(myFunc.getDescription('drizzle'));
@@ -71,7 +45,7 @@ app.post('/', (req, res) => {
                     // console.log(myFunc.getDescription('thunderstorm'));
                     // console.log(myFunc.getDescription('snow'));
                     // console.log(myFunc.getDescription('mist'));
-                    
+
                     res.render('weather response', {
                         // start of from
                         iconFrom: dataFrom.weather[0].icon,
@@ -107,7 +81,6 @@ app.post('/', (req, res) => {
             // if TYPO, send a page that lists possible city names
         }
     });
-
 })
 app.listen(3000, () => console.log('starting'));
 
