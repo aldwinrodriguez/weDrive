@@ -1,15 +1,55 @@
 <%- include('header'); -%>
 
 <body class="index">
+    <div id="message">
+        <div class="about">
+            <div class="what">
+                <div>About this app:</div>
+                <div>This app will tell you the weather of the cities that you're going to go through. It tells you what
+                    most
+                    of the temperature and weather conditions will be like on your way to your desination.</div>
+                <div class="features">Current Features:
+                    <ul>
+                        <li>Weather dependant (background)</li>
+                        <li>Driving experience (Top section of the results)</li>
+                        <li>Currently the app will <span>SOMETIMES</span> spit out errors,
+                            this happens because some cities are not propery implemented yet</li>
+                        <li>Check it out for more !! 😁</li>
+                    </ul>
+                </div>
+                <div class="features">Future Features:
+                    <ul>
+                        <li>Better UI</li>
+                        <li>Mobile friendly</li>
+                        <li>List of cities and Country selection</li>
+                        <li>Day and Night weather specific</li>
+                        <li>Improved city accuracy</li>
+                        <li>Got any ideas? ... connect with me at <a href="mailto:niwdla0405@gmail.com">click here</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button id="close">CLOSE X</button>
+        </div>
+    </div>
+
     <div id="wrapper">
         <div class='itemInputContainer'>
             <form action="/" method="post">
                 <h1 class='center'>weDrive</h1>
-                <input type="text" value="Elizabeth" name="from" id='itemInput' placeholder="From what city?" autofocus>
-                <input type="text" value="Paramus" name="to" id='itemInput' placeholder="To what city?">
+                <input type="text" name="from" id='itemInput' placeholder="From what city?" autofocus>
+                <input type="text" name="to" id='itemInput' placeholder="To what city?">
                 <button type="submit" class='center'>Check Weather</button>
             </form>
         </div>
     </div>
+
+    <script>
+        let close = document.getElementById('close');
+        let messageContainer = document.getElementById('message');
+        close.addEventListener('click', function () {
+            messageContainer.remove();
+        })
+    </script>
 
     <%- include('footer'); -%>

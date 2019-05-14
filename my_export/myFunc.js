@@ -48,9 +48,6 @@ module.exports = {
             avgId = 700;
         }
         
-        console.log(this.mostFreq(weatherId), weatherId);
-        
-
         return imgId[avgId];
     },
     mostFreqNum(arr) {

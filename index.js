@@ -21,84 +21,91 @@ app.post('/', (req, res) => {
     let to = formData.to;
 
     request(options.Where(from), (error, response, body) => {
+        error ? console.log('error:', error) : console.log('response from', response && response.statusCode);
         if (response.statusCode === 200) {
             dataFrom = JSON.parse(body);
             request(options.Where(to), (error, response, body) => {
-                // error ? console.log('error:', error) : console.log('response', response && response.statusCode);
-                dataTo = JSON.parse(body);
+                if (response.statusCode === 200) {
+                    console.log('to', response.statusCode);
+                    error ? console.log('error:', error) : console.log('response to', response && response.statusCode);
+                    dataTo = JSON.parse(body);
 
-                let fromLon = dataFrom.coord.lon;
-                let fromLat = dataFrom.coord.lat;
-                let toLon = dataTo.coord.lon;
-                let toLat = dataTo.coord.lat;
+                    let fromLon = dataFrom.coord.lon;
+                    let fromLat = dataFrom.coord.lat;
+                    let toLon = dataTo.coord.lon;
+                    let toLat = dataTo.coord.lat;
 
-                request(options.Multiple(fromLon, fromLat, toLon, toLat), (error, response, body) => {
-                    if (error) res.send('search box is too small');
-                    let dataMultiple = JSON.parse(body);
-                    let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
-                    let desc = myFunc.getDescription(imgAndDesc[1]);
-					console.log("TCL: desc", desc)
-                    // console.log(myFunc.getDescription('scatter clouds'));
-                    // console.log(myFunc.getDescription('broken clouds'));
-                    // console.log(myFunc.getDescription('drizzle'));
-                    // console.log(myFunc.getDescription('rain'));
-                    // console.log(myFunc.getDescription('thunderstorm'));
-                    // console.log(myFunc.getDescription('snow'));
-                    // console.log(myFunc.getDescription('mist'));
+                    request(options.Multiple(fromLon, fromLat, toLon, toLat), (error, response, body) => {
+                        if (response.statusCode === 200) {
+                            console.log('mul', response.statusCode);
+                            error ? console.log('error:', error) : console.log('response mul', response && response.statusCode);
+                            let dataMultiple = JSON.parse(body);
+                            console.log('this', dataMultiple.list.length);
+                            if (dataMultiple.list.length >= 120) {
+                                res.render('errormessage', {
+                                    message: 'Too many cities to output, this occurs because some Country/Places have the same city name as your input. This is currently being fixed, Thank you !!'
+                                });
+                            }
 
-                    res.render('weather response', {
-                        // start of from
-                        iconFrom: dataFrom.weather[0].icon,
-                        cityFrom: dataFrom.name,
-                        descriptionFrom: dataFrom.weather[0].description,
-                        mainDescFrom: dataFrom.weather[0].main,
-                        tempFrom: dataFrom.main.temp.toFixed(0),
-                        minTempFrom: dataFrom.main.temp_min.toFixed(0),
-                        maxTempFrom: dataFrom.main.temp_max.toFixed(0),
-                        // end of from
-                        // start of to
-                        iconTo: dataTo.weather[0].icon,
-                        cityTo: dataTo.name,
-                        descriptionTo: dataTo.weather[0].description,
-                        mainDescTo: dataTo.weather[0].main,
-                        tempTo: dataTo.main.temp.toFixed(0),
-                        minTempTo: dataTo.main.temp_min.toFixed(0),
-                        maxTempTo: dataTo.main.temp_max.toFixed(0),
-                        // end of to
-                        // start of multipleData
-                        list: dataMultiple.list,
-                        avgWeatherAndDesc: myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id),
-                        avgTemp: myFunc.mostFreqNum(dataMultiple.list),
-                        mainDesc: myFunc.getDescription(myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id)[1]),
+                            let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
+                            let desc = myFunc.getDescription(imgAndDesc[1]);
+                            // console.log(myFunc.getDescription('scatter clouds'));
+                            // console.log(myFunc.getDescription('broken clouds'));
+                            // console.log(myFunc.getDescription('drizzle'));
+                            // console.log(myFunc.getDescription('rain'));
+                            // console.log(myFunc.getDescription('thunderstorm'));
+                            // console.log(myFunc.getDescription('snow'));
+                            // console.log(myFunc.getDescription('mist'));
 
-                        // end of multipleData
+                            res.render('weather response', {
+                                // start of from
+                                iconFrom: dataFrom.weather[0].icon,
+                                cityFrom: dataFrom.name,
+                                descriptionFrom: dataFrom.weather[0].description,
+                                mainDescFrom: dataFrom.weather[0].main,
+                                tempFrom: dataFrom.main.temp.toFixed(0),
+                                minTempFrom: dataFrom.main.temp_min.toFixed(0),
+                                maxTempFrom: dataFrom.main.temp_max.toFixed(0),
+                                // end of from
+                                // start of to
+                                iconTo: dataTo.weather[0].icon,
+                                cityTo: dataTo.name,
+                                descriptionTo: dataTo.weather[0].description,
+                                mainDescTo: dataTo.weather[0].main,
+                                tempTo: dataTo.main.temp.toFixed(0),
+                                minTempTo: dataTo.main.temp_min.toFixed(0),
+                                maxTempTo: dataTo.main.temp_max.toFixed(0),
+                                // end of to
+                                // start of multipleData
+                                list: dataMultiple.list,
+                                avgWeatherAndDesc: myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id),
+                                avgTemp: myFunc.mostFreqNum(dataMultiple.list),
+                                mainDesc: myFunc.getDescription(myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id)[1]),
+
+                                // end of multipleData
+                            });
+                        } else {
+                            return res.render('errormessage', {
+                                message: `${response.statusCode} StatusCODE 'MULTI'`
+                            })
+                        }
                     });
-                });
+                } else {
+                    return res.render('errormessage', {
+                        message: `${response.statusCode} StatusCODE 'TO'`
+                    })
+                }
             });
         } else {
             // tempSolution
-            res.send('<h1>Something went wrong</h1>')
+            return res.render('errormessage', {
+                message: `${response.statusCode} StatusCODE 'FROM'`
+            })
             // if TYPO, send a page that lists possible city names
         }
     });
 })
 app.listen(3000, () => console.log('starting'));
-
-
-
-
-// API call
-// http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-
-// http://api.openweathermap.org/data/2.5/forecast?id=5097598&APPID=a2b8a68b80bdbfcaebb2d6c124e35e40
-
-// 5097598
-// Elizabeth
-
-/*
- API key
- &APPID=a2b8a68b80bdbfcaebb2d6c124e35e40
-*/
 
 // Call current weather data for one location
 

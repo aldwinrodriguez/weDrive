@@ -1,0 +1,36 @@
+<%- include('header'); -%>
+
+<body>
+    <div id="message">
+        <div class="about">
+            <div class="what">
+                <div>ERROR: </div>
+                <div>
+                    <%=message%>
+                </div>
+                <div class="features">Current Features:
+                    <ul>
+                        <li>Weather dependant (background)</li>
+                        <li>Driving experience (Top section of the results)</li>
+                        <li style="font-weight: bold; color: rgb(158, 17, 17);">Currently the app will <span
+                                style="color: rgb(184, 20, 129); font-weight: bolder;">SOMETIMES</span> spit out errors,
+                            this happens because some cities are not propery implemented yet</li>
+                        <li>Check it out for more !! 😁</li>
+                    </ul>
+                </div>
+                <div class="features">Future Features:
+                    <ul>
+                        <li>Better UI</li>
+                        <li>Mobile friendly</li>
+                        <li>List of cities and Country selection</li>
+                        <li>Day and Night weather specific</li>
+                        <li>Improved city accuracy</li>
+                        <li>Got any ideas? ... connect with me at <a href="mailto:niwdla0405@gmail.com">click here</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a href="/"><button id="close">HOME</button></a>
+        </div>
+
+        <%- include('footer'); -%>
