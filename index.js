@@ -105,7 +105,11 @@ app.post('/', (req, res) => {
         }
     });
 })
-app.listen(3000, () => console.log('starting'));
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+app.listen(port);
 
 // Call current weather data for one location
 
