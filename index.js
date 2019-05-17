@@ -41,7 +41,7 @@ app.post('/', (req, res) => {
                             error ? console.log('error:', error) : console.log('response mul', response && response.statusCode);
                             let dataMultiple = JSON.parse(body);
                             console.log('this', dataMultiple.list.length);
-                            if (dataMultiple.list.length >= 120) {
+                            if (dataMultiple.list.length >= 150) {
                                 res.render('errormessage', {
                                     message: 'Too many cities to output, this occurs because some Country/Places have the same city name as your input. This is currently being fixed, Thank you !!'
                                 });
