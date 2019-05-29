@@ -19,6 +19,9 @@ app.post('/', (req, res) => {
     let formData = req.body;
     let from = formData.from;
     let to = formData.to;
+    console.log(typeof from);
+    console.log(typeof to);
+    
 
     request(options.Where(from), (error, response, body) => {
         error ? console.log('error:', error) : console.log('response from', response && response.statusCode);
@@ -41,11 +44,11 @@ app.post('/', (req, res) => {
                             error ? console.log('error:', error) : console.log('response mul', response && response.statusCode);
                             let dataMultiple = JSON.parse(body);
                             console.log('this', dataMultiple.list.length);
-                            if (dataMultiple.list.length >= 300) {
-                                res.render('errormessage', {
-                                    message: 'Too many cities to output, this occurs because some Country/Places have the same city name as your input. This is currently being fixed, Thank you !!'
-                                });
-                            }
+                            // if (dataMultiple.list.length >= 300) {
+                            //     res.render('errormessage', {
+                            //         message: 'Too many cities to output, this occurs because some Country/Places have the same city name as your input. This is currently being fixed, Thank you !!'
+                            //     });
+                            // }
 
                             let imgAndDesc = myFunc.getImgAndDesc(dataMultiple.list, dataFrom.weather[0].id, dataTo.weather[0].id);
                             let desc = myFunc.getDescription(imgAndDesc[1]);

@@ -38,11 +38,15 @@
         <div class='itemInputContainer'>
             <form action="/" method="post">
                 <h1 class='center'>weDrive</h1>
-                <input type="text" name="from" id='itemInput' placeholder="From what city?" autofocus>
-                <input type="text" name="to" id='itemInput' placeholder="To what city?">
+                <input type="text" name="from" class='itemInput' id="from" placeholder="From what city?" autofocus>
+                <input type="text" name="to" class='itemInput' id="to" placeholder="To what city?">
                 <button type="submit" class='center'>Check Weather</button>
             </form>
         </div>
+    </div>
+    <div id="cityList">
+        <ul >
+        </ul>
     </div>
 
     <script>
