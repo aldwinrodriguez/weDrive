@@ -6704,21 +6704,8 @@ let notDuplicatedCities = {
 };
 
 
-let keys = Object.keys(notDuplicatedCities);
+// function upper(str) {
+//     return str[0].toUpperCase() + str.slice(1, str.length);
+// }
 
-function upper(str) {
-    return str[0].toUpperCase() + str.slice(1, str.length);
-}
-
-$('#from').keyup(function (e) {
-    $('div#cityList ul').empty();
-    let input = upper(this.value);
-    if (input.length >= 2) {
-        keys.forEach(element => {
-            if (element.indexOf(input) >= 0) {
-                let el = '<li> ' + element + ' </li>';
-                $('div#cityList ul').append(el);
-            }
-        })
-    }
-})
+export default notDuplicatedCities;

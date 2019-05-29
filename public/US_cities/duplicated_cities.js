@@ -29501,3 +29501,6 @@ let duplicatedCities = [{
         }
     }
 }];
+
+
+export default duplicatedCities;
