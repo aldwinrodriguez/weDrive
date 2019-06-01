@@ -109,6 +109,10 @@ app.post('/', (req, res) => {
     });
 })
 
+app.get('/introduction', function(req,res) {
+    res.json({name: 'aldwin'});
+})
+
 app.get('/:from-:to', function (req, res) {
     let formData = req.params;
     let from = formData.from;
