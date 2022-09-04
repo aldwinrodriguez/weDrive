@@ -19,9 +19,6 @@ app.post('/', (req, res) => {
     let formData = req.body;
     let from = formData.from;
     let to = formData.to;
-    console.log(typeof from);
-    console.log(typeof to);
-
 
     request(options.Where(from), (error, response, body) => {
         error ? console.log('error:', error) : console.log('response from', response && response.statusCode);
