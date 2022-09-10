@@ -19,10 +19,10 @@ Experimental Weather API
 
 
 ### Future Features:
- Markup : - [ ] Better UI
-          - [_] Mobile friendly
-          - [_] List of cities and Country selection
-          - [_] Day and Night weather specific 
+* Better UI
+* Mobile friendly
+* List of cities and Country selection
+* Day and Night weather specific
 
 
 Any questions or ideas? connect with me at aldwindrodriguez@gmail.com
