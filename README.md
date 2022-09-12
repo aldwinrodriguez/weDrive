@@ -18,6 +18,7 @@ Experimental Weather API
 <img src="screenshots/main.gif" alt="alt text" width="612" height="325">
 
 
+
 ### Future Features:
 * Better UI
 * Mobile friendly
